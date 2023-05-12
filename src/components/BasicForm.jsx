@@ -1,10 +1,45 @@
+import { useFormik } from "formik";
+import { schema } from "../utilities/schema";
+import { useState } from "react";
+
 const BasicForm = () => {
+  const { values, handleChange, handleBlur, handleSubmit, errors } = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      age: "",
+      city: "",
+      country: "",
+      password: "",
+      confirmPassword: "",
+    },
+
+    // validation using yup
+    validationSchema: schema,
+  });
+  console.log(values);
+  console.log(errors);
+
+  // set password state
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // toggle password function
+  function togglePassword() {
+    setShowPassword(!showPassword);
+  }
+ // toggle confirm password function
+  function toggleConfirmPassword() {
+    setShowConfirmPassword(!showConfirmPassword);
+  }
+
   return (
     <main>
       <section className="form">
-        <form>
+        <form autoComplete="off" onSubmit={handleSubmit}>
           <fieldset className="fieldset">
             <h1 className="h1">Fill Out the Form Correctly</h1>
+            {/* username */}
             <section>
               <div>
                 <label htmlFor="username">Username: </label>
@@ -16,6 +51,9 @@ const BasicForm = () => {
                   type="text"
                   placeholder="Enter username"
                   name="username"
+                  values={values.username}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
               </div>
             </section>
@@ -32,6 +70,9 @@ const BasicForm = () => {
                   type="email"
                   placeholder="Enter email"
                   name="email"
+                  values={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
               </div>
             </section>
@@ -48,6 +89,9 @@ const BasicForm = () => {
                   type="number"
                   placeholder="Enter your age"
                   name="age"
+                  values={values.age}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
               </div>
             </section>
@@ -58,7 +102,14 @@ const BasicForm = () => {
                 <label htmlFor="city">City: </label>
               </div>
               <div>
-                <select id="city" className="input" name="city">
+                <select
+                  id="city"
+                  className="input"
+                  name="city"
+                  values={values.city}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
                   <option value="">...Select your City</option>
                   <option value="bahamas">Bahamas</option>
                   <option value="orlando">Orlando</option>
@@ -84,6 +135,9 @@ const BasicForm = () => {
                   placeholder="Choose your Country"
                   name="country"
                   list="country-list"
+                  values={values.country}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
               </div>
               <datalist id="country-list">
@@ -107,10 +161,24 @@ const BasicForm = () => {
                 <input
                   id="password"
                   className="input"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Enter password"
                   name="password"
+                  values={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
+              </div>
+              {/* toggle checkbox */}
+              <div style={{ marginBottom: "1rem", }}>
+                <input type="checkbox" onClick={togglePassword} id="toggle" />
+                <label
+                  style={{ marginLeft: "1.5rem", fontWeight: "200", fontSize: '12px' }}
+                  htmlFor="toggle"
+                >
+                  {" "}
+                  <em>Click to show password</em>{" "}
+                </label>
               </div>
             </section>
 
@@ -123,10 +191,24 @@ const BasicForm = () => {
                 <input
                   id="confirmPassword"
                   className="input"
-                  type="password"
+                  type={showConfirmPassword ? 'text' : 'password'}
                   placeholder="Confirm Password"
                   name="confirmPassword"
+                  values={values.confirmPassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
+              </div>
+              {/* toggle checkbox */}
+              <div style={{ marginBottom: "1rem" }}>
+                <input type="checkbox" onClick={toggleConfirmPassword} id="toggleConfirm" />
+                <label
+                  style={{ marginLeft: "1.5rem", fontWeight: "200", fontSize: '12px' }}
+                  htmlFor="toggleConfirm"
+                >
+                  {" "}
+                  <em>Click to show password</em>{" "}
+                </label>
               </div>
             </section>
             {/* radio button */}
@@ -156,7 +238,6 @@ const BasicForm = () => {
             </section>
 
             {/* button */}
-
             <div className="btn-div">
               <button type="button" className="button">
                 Submit
