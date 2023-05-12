@@ -12,10 +12,13 @@
   --bg: rgba(0, 0, 0, 0.2);
   --white: #fff;
   --another: rgb(65, 92, 85);
+  --border-color: #ccd;
+  --border-focus: goldenrod;
+  --errors: rgb(245, 29, 29);
 }
 
 .bg {
-  border: 1px solid #ccd;
+  border: 1px solid var(--border-color);
   position: relative;
 }
 
@@ -65,7 +68,7 @@ img:hover {
 /* form title */
 .h1 {
   font-size: 1.2rem;
-  color: goldenrod;
+  color: var(--border-focus);
   letter-spacing: 1px;
   margin-bottom: 1rem;
   font-weight: 500;
@@ -96,14 +99,14 @@ img:hover {
   margin: 1rem 0rem;
   width: 100%;
   outline: none;
-  border: 1px solid #ccd;
+  border: 1px solid var(--border-color);
   transition-property: border box-shadow;
   transition-duration: 500ms;
   transition-timing-function: ease-in;
 }
 
 .input:focus {
-  border: 1px ridge goldenrod;
+  border: 1px ridge var(--border-focus);
   border-radius: 0.5rem;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2), 0px 0px 64px rgba(236, 232, 232, 0.2);
 }
@@ -111,17 +114,17 @@ img:hover {
 /* form area */
 .fieldset {
   padding: 4rem;
-  border: 1px ridge goldenrod;
+  border: 1px ridge var(--border-focus);
 }
 
 /* submit button */
 .button {
   padding: 0.5rem 1rem;
-  background-color: goldenrod;
-  color: #fff;
+  background-color: var(--border-focus);
+  color: var(--white);
   /* margin-top: 2rem; */
   outline: none;
-  border: 1px ridge rgb(245, 29, 29);
+  border: 1px ridge var(--errors);
   width: 100%;
   font-size: 1.2rem;
 }
@@ -149,4 +152,10 @@ img:hover {
 /* checkbox */
 .checkbox {
   margin: 1rem 0rem 2rem 0rem;
+}
+
+/* form errors */
+
+.form-errors {
+  border-color: var(--errors);
 }

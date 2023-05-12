@@ -2,8 +2,13 @@ import { useFormik } from "formik";
 import { schema } from "../utilities/schema";
 import { useState } from "react";
 
+// function that fires when handleSubmit runs
+const onSubmit = () => {
+  console.log('Submitted')
+}
+
 const BasicForm = () => {
-  const { values, handleChange, handleBlur, handleSubmit, errors } = useFormik({
+  const { values, handleChange, handleBlur, handleSubmit, errors, touched } = useFormik({
     initialValues: {
       username: "",
       email: "",
@@ -16,8 +21,9 @@ const BasicForm = () => {
 
     // validation using yup
     validationSchema: schema,
+    onSubmit,
   });
-  console.log(values);
+  // console.log(values);
   console.log(errors);
 
   // set password state
@@ -28,7 +34,7 @@ const BasicForm = () => {
   function togglePassword() {
     setShowPassword(!showPassword);
   }
- // toggle confirm password function
+  // toggle confirm password function
   function toggleConfirmPassword() {
     setShowConfirmPassword(!showConfirmPassword);
   }
@@ -47,13 +53,13 @@ const BasicForm = () => {
               <div>
                 <input
                   id="username"
-                  className="input"
                   type="text"
                   placeholder="Enter username"
                   name="username"
                   values={values.username}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  className= {errors.username && touched.username ? 'form-errors input' : 'input'}
                 />
               </div>
             </section>
@@ -66,7 +72,7 @@ const BasicForm = () => {
               <div>
                 <input
                   id="email"
-                  className="input"
+                  className= {errors.email && touched.email ? 'form-errors input' : 'input'}
                   type="email"
                   placeholder="Enter email"
                   name="email"
@@ -85,7 +91,7 @@ const BasicForm = () => {
               <div>
                 <input
                   id="age"
-                  className="input"
+                  className= {errors.age && touched.age ? 'form-errors input' : 'input'}
                   type="number"
                   placeholder="Enter your age"
                   name="age"
@@ -103,8 +109,7 @@ const BasicForm = () => {
               </div>
               <div>
                 <select
-                  id="city"
-                  className="input"
+                  className= {errors.city && touched.city ? 'form-errors input' : 'input'}
                   name="city"
                   values={values.city}
                   onChange={handleChange}
@@ -130,7 +135,7 @@ const BasicForm = () => {
               <div>
                 <input
                   id="country"
-                  className="input"
+                  className= {errors.country && touched.country ? 'form-errors input' : 'input'}
                   type="text"
                   placeholder="Choose your Country"
                   name="country"
@@ -160,7 +165,7 @@ const BasicForm = () => {
               <div>
                 <input
                   id="password"
-                  className="input"
+                  className= {errors.password && touched.password ? 'form-errors input' : 'input'}
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter password"
                   name="password"
@@ -170,10 +175,14 @@ const BasicForm = () => {
                 />
               </div>
               {/* toggle checkbox */}
-              <div style={{ marginBottom: "1rem", }}>
+              <div style={{ marginBottom: "1rem" }}>
                 <input type="checkbox" onClick={togglePassword} id="toggle" />
                 <label
-                  style={{ marginLeft: "1.5rem", fontWeight: "200", fontSize: '12px' }}
+                  style={{
+                    marginLeft: "1.5rem",
+                    fontWeight: "200",
+                    fontSize: "12px",
+                  }}
                   htmlFor="toggle"
                 >
                   {" "}
@@ -190,8 +199,8 @@ const BasicForm = () => {
               <div>
                 <input
                   id="confirmPassword"
-                  className="input"
-                  type={showConfirmPassword ? 'text' : 'password'}
+                  className= {errors.confirmPassword && touched.confirmPassword ? 'form-errors input' : 'input'}
+                  type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm Password"
                   name="confirmPassword"
                   values={values.confirmPassword}
@@ -201,9 +210,17 @@ const BasicForm = () => {
               </div>
               {/* toggle checkbox */}
               <div style={{ marginBottom: "1rem" }}>
-                <input type="checkbox" onClick={toggleConfirmPassword} id="toggleConfirm" />
+                <input
+                  type="checkbox"
+                  onClick={toggleConfirmPassword}
+                  id="toggleConfirm"
+                />
                 <label
-                  style={{ marginLeft: "1.5rem", fontWeight: "200", fontSize: '12px' }}
+                  style={{
+                    marginLeft: "1.5rem",
+                    fontWeight: "200",
+                    fontSize: "12px",
+                  }}
                   htmlFor="toggleConfirm"
                 >
                   {" "}
