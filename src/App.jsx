@@ -4,6 +4,7 @@ import { About } from "./components/About";
 import { Home } from './components/Home'
 import { RootLayout } from "./layout/RootLayout";
 import ErrorPage from "./components/ErrorPage";
+import AdvancedForm from './components/AdvancedForm';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="basicform" element={<BasicForm />} />
       <Route path="about" element={<About />} />
+      <Route path="advancedform" element={<AdvancedForm />} />
     </Route>
   )
 );

@@ -49,6 +49,7 @@ const FooterComponent = () => {
           </ul>
         </section>
       </footer>
+
       {/* base footer */}
       <footer className="base-footer">
         {/* one */}
