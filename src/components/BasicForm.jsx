@@ -1,14 +1,20 @@
 import { useFormik } from "formik";
 import { schema } from "../utilities/schema";
 import { useState } from "react";
+// import * as yup from 'yup';
 
-// function that fires when handleSubmit runs
-const onSubmit = () => {
-  console.log('Submitted')
-}
+    // function that fires when handleSubmit runs
+    // const onSubmit = async (values, actions) => {
+      // console.log(initialValues);
+    //   await new Promise((resolve) => setTimeout(resolve, 1000))
+    //   actions.resetForm
+    // };
 
-const BasicForm = () => {
-  const { values, handleChange, handleBlur, handleSubmit, errors, touched } = useFormik({
+export const BasicForm = () => {
+
+
+// useformik configurations
+  const { values, handleChange, handleBlur, handleSubmit, errors, touched, isSubmitting } = useFormik({
     initialValues: {
       username: "",
       email: "",
@@ -17,11 +23,17 @@ const BasicForm = () => {
       country: "",
       password: "",
       confirmPassword: "",
+      agree: false,
     },
 
     // validation using yup
     validationSchema: schema,
-    onSubmit,
+    onSubmit: async (values, actions) => {
+      console.log(values);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      actions.resetForm();
+      
+    },
   });
   // console.log(values);
   console.log(errors);
@@ -30,23 +42,22 @@ const BasicForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // toggle password function
+  // toggle password visibility
   function togglePassword() {
     setShowPassword(!showPassword);
   }
-  // toggle confirm password function
+  // toggle confirm password visibility
   function toggleConfirmPassword() {
     setShowConfirmPassword(!showConfirmPassword);
   }
 
   return (
-    <main>
-      <section className="form">
+    <main className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <fieldset className="fieldset">
             <h1 className="h1">Fill Out the Form Correctly</h1>
             {/* username */}
-            <section>
+            <section className="input-wrapper">
               <div>
                 <label htmlFor="username">Username: </label>
               </div>
@@ -62,10 +73,11 @@ const BasicForm = () => {
                   className= {errors.username && touched.username ? 'form-errors input' : 'input'}
                 />
               </div>
+              {errors.username && touched.username ? (<p className="error-display">{errors.username}</p>) : ''}
             </section>
 
             {/* email */}
-            <section>
+            <section className="input-wrapper">
               <div>
                 <label htmlFor="email">E-mail: </label>
               </div>
@@ -81,10 +93,11 @@ const BasicForm = () => {
                   onBlur={handleBlur}
                 />
               </div>
+              {errors.email && touched.email ? (<p className="error-display">{errors.email}</p>) : ''}
             </section>
 
             {/* age */}
-            <section>
+            <section  className="input-wrapper">
               <div>
                 <label htmlFor="age">Age: </label>
               </div>
@@ -100,10 +113,11 @@ const BasicForm = () => {
                   onBlur={handleBlur}
                 />
               </div>
+              {errors.age && touched.age ? (<p className="error-display">{errors.age}</p>) : ''}
             </section>
 
             {/* city */}
-            <section>
+            <section className="input-wrapper">
               <div>
                 <label htmlFor="city">City: </label>
               </div>
@@ -125,10 +139,11 @@ const BasicForm = () => {
                   <option value="alabama">Alabama</option>
                 </select>
               </div>
+              {errors.city && touched.city ? (<p className="error-display">{errors.city}</p>) : ''}
             </section>
 
             {/* country */}
-            <section>
+            <section  className="input-wrapper">
               <div>
                 <label htmlFor="country">Country: </label>
               </div>
@@ -155,10 +170,11 @@ const BasicForm = () => {
                 <option value="Haiti"></option>
                 <option value="Netherland"></option>
               </datalist>
+              {errors.country && touched.country ? (<p className="error-display">{errors.country}</p>) : ''}
             </section>
 
             {/* password */}
-            <section>
+            <section className="input-wrapper">
               <div>
                 <label htmlFor="password">Password: </label>
               </div>
@@ -174,8 +190,9 @@ const BasicForm = () => {
                   onBlur={handleBlur}
                 />
               </div>
+              {errors.password && touched.password ? (<p className="error-display">{errors.password}</p>) : ''}
               {/* toggle checkbox */}
-              <div style={{ marginBottom: "1rem" }}>
+              <div style={{ margin: "0.5rem 0rem", display: 'flex', alignItems: 'center' }}>
                 <input type="checkbox" onClick={togglePassword} id="toggle" />
                 <label
                   style={{
@@ -185,14 +202,13 @@ const BasicForm = () => {
                   }}
                   htmlFor="toggle"
                 >
-                  {" "}
-                  <em>Click to show password</em>{" "}
+                  Click to show password
                 </label>
               </div>
             </section>
 
             {/* confirm password */}
-            <section>
+            <section className="input-wrapper">
               <div>
                 <label htmlFor="confirmPassword">Confirm Password: </label>
               </div>
@@ -208,8 +224,9 @@ const BasicForm = () => {
                   onBlur={handleBlur}
                 />
               </div>
+              {errors.confirmPassword && touched.confirmPassword ? (<p className="error-display">{errors.confirmPassword}</p>) : ''}
               {/* toggle checkbox */}
-              <div style={{ marginBottom: "1rem" }}>
+              <div style={{ margin: "0.5rem 0rem", display: 'flex', alignItems: 'center' }}>
                 <input
                   type="checkbox"
                   onClick={toggleConfirmPassword}
@@ -223,13 +240,12 @@ const BasicForm = () => {
                   }}
                   htmlFor="toggleConfirm"
                 >
-                  {" "}
-                  <em>Click to show password</em>{" "}
+                  Click to show password
                 </label>
               </div>
             </section>
             {/* radio button */}
-            <section>
+            <section className="input-wrapper">
               <fieldset className="radio-fieldset">
                 <div>
                   <input className="space-radio" type="radio" name="radio" />
@@ -244,27 +260,23 @@ const BasicForm = () => {
             </section>
 
             {/* checkbox */}
-            <section className="checkbox">
-              <input id="checkbox" type="checkbox" name="checkbox" />
-              <label htmlFor="checkbox" style={{ marginLeft: "4rem" }}>
-                <code>
+            <section className="checkbox input-wrapper">
+              <input id="checkbox" type="checkbox" name="agree" />
+              <label htmlFor="checkbox" style={{ marginLeft: "4rem", fontWeight: '300', fontSize: '0.8rem' }}>
                   I acknowledge that I have read and agreed to the terms of
-                  service.{" "}
-                </code>
+                  service.
               </label>
+              {errors.agree ? (<p className="error-display">{errors.agree}</p>) : ''}
             </section>
 
             {/* button */}
             <div className="btn-div">
-              <button type="button" className="button">
+              <button disabled={isSubmitting} type="submit" className="button">
                 Submit
               </button>
             </div>
           </fieldset>
         </form>
-      </section>
     </main>
   );
 };
-
-export default BasicForm;

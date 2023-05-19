@@ -1,15 +1,28 @@
-import { useState } from "react";
-import BasicForm from "./components/BasicForm";
-import AdvancedForm from "./components/AdvancedForm";
+// import { useState } from "react";
+import { BasicForm } from "./components/BasicForm";
+import { About } from "./components/About";
+import { Home } from './components/Home'
+import { RootLayout } from "./layout/RootLayout";
+import ErrorPage from "./components/ErrorPage";
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
 function App() {
-
-const [view, setView] = useState("basic");
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
+      <Route path="/" element={<Home />} />
+      <Route path="basicform" element={<BasicForm />} />
+      <Route path="about" element={<About />} />
+    </Route>
+  )
+);
+// const [view, setView] = useState("basic");
 
   return (
-    <main className="container">
+    <>
+      <RouterProvider router={router} />
       {/* forms */}
-      <nav className="form-container">
+      {/* <nav className="form-container">
         <section className="header">
         <h4 onClick={() => setView('basic')}>
             Basic
@@ -22,7 +35,7 @@ const [view, setView] = useState("basic");
        
        {view === 'basic' ? <BasicForm /> : <AdvancedForm />}
        
-      </nav>
+      </nav> */}
 
       {/* overlay text over images */}
       {/* <div className="bg">
@@ -34,8 +47,8 @@ const [view, setView] = useState("basic");
           </div>
         </div>
       </div> */}
-    </main>
-  );
+    </>
+  )
 }
 
 export default App;
