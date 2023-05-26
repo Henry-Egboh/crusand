@@ -5,6 +5,7 @@ import { Home } from './components/Home'
 import { RootLayout } from "./layout/RootLayout";
 import ErrorPage from "./components/ErrorPage";
 import AdvancedForm from './components/AdvancedForm';
+import {FeedbackForm} from "./components/FeedbackForm";
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
 function App() {
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
       <Route path="basicform" element={<BasicForm />} />
       <Route path="about" element={<About />} />
       <Route path="advancedform" element={<AdvancedForm />} />
+      <Route path="feedbackform" element={<FeedbackForm />} />
     </Route>
   )
 );
@@ -23,21 +25,6 @@ const router = createBrowserRouter(
   return (
     <>
       <RouterProvider router={router} />
-      {/* forms */}
-      {/* <nav className="form-container">
-        <section className="header">
-        <h4 onClick={() => setView('basic')}>
-            Basic
-        </h4>
-
-        <h4 onClick={() => setView('advanced')}>
-          Advanced
-        </h4>
-        </section>
-       
-       {view === 'basic' ? <BasicForm /> : <AdvancedForm />}
-       
-      </nav> */}
 
       {/* overlay text over images */}
       {/* <div className="bg">

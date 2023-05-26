@@ -1,11 +1,12 @@
 import { About } from "./About";
 import FooterComponent from "./FooterComponent";
+import HeaderComponent from "./HeaderComponent";
 import { Showcase } from "./Showcase";
 
 export const Home = () => {
   return (
     <div>
-      <About />
+      <HeaderComponent />
       <Showcase />
       <FooterComponent />
     </div>

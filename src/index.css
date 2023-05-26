@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;800&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Tajawal', sans-serif;
+  font-family: "Tajawal", sans-serif;
 }
 
 :root {
@@ -18,7 +17,7 @@
   --text-color: hsl(327, 11%, 15%);
 }
 
-.bg {
+/* .bg {
   border: 1px solid var(--border-color);
   position: relative;
 }
@@ -29,7 +28,6 @@ img {
 
 .overlay {
   position: absolute;
-  /* padding: 2rem; */
   top: 0;
   left: 0;
   bottom: 0;
@@ -39,11 +37,13 @@ img {
   opacity: 0;
 }
 
-.bg, .overlay {
+.bg,
+.overlay {
   text-align: center;
 }
 
-img, .overlay {
+img,
+.overlay {
   transition: 1000ms all;
   cursor: pointer;
 }
@@ -58,6 +58,68 @@ img:hover {
 
 .overlay h4 {
   padding-top: 45%;
+} */
+
+/* ========================================= TOP ==============================================================================
+============================================================ HEADER ========================================================= */
+.top-header {
+  margin: 6rem 0rem 8rem 20rem;
+}
+
+.header-text {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 0.5rem 0rem;
+  line-height: 2rem;
+  margin-bottom: 2rem;
+}
+
+.headerbtns-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.headerbtns {
+  background-color: var(--another);
+  color: var(--border-color);
+  padding: 1rem 1rem;
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: all 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: transform 400ms ease;
+}
+
+.headerbtns-light {
+  color: var(--another);
+  background: var(--border-color);
+}
+
+.headerbtns:hover {
+  background-color: var(--border-focus);
+  color: var(--white);
+  cursor: pointer;
+  transform: scale(0.98);
+}
+
+.headerbtns:focus {
+  background-color: var(--border-focus);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.top-header h1 {
+  margin-bottom: 1rem;
+}
+
+.top-header p:nth-of-type(2) {
+  opacity: 0.6;
+}
+
+.top-header p:nth-of-type(3) {
+  border-bottom: 1px groove var(--border-focus);
+  width: 40%;
+  color: var(--text-color);
 }
 
 /* ========================================================================= FORMS =============================================
@@ -99,6 +161,7 @@ img:hover {
 /* input wrapper */
 .input-wrapper {
   margin: 1rem 0rem;
+  width: 100%;
 }
 /* input element */
 .input {
@@ -115,7 +178,8 @@ img:hover {
 .input:focus {
   border: 1px ridge var(--border-focus);
   border-radius: 0.5rem;
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2), 0px 0px 64px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2),
+    0px 0px 64px rgba(255, 255, 255, 0.2);
 }
 
 /* form area */
@@ -165,6 +229,7 @@ img:hover {
 
 .form-errors {
   border-color: var(--errors);
+  width: 100%;
 }
 
 /* change button opacity when the form isSubmitting  */
@@ -179,41 +244,42 @@ button:disabled {
   font-size: 0.8rem;
 }
 
-@media screen and (min-width: 200px ) {
+@media screen and (min-width: 200px) {
   /* form container */
-.form-container {
-  width: 100%;
-  margin: 0rem;
-}
+  .form-container {
+    width: 100%;
+    margin: 0rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
   /* form container */
-.form-container {
-  width: 55%;
-  margin: 2rem auto;
-}
+  .form-container {
+    width: 55%;
+    margin: 2rem auto;
+  }
 }
 
 /* ========================================= ERROR =================================================================================
   =========================================================PAGE =========================================================== */
-  .error-page {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.error-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-
-  /* ===================================================NAVBAR ==============================================================
+/* ===================================================NAVBAR ==============================================================
 =============================================TOP NAV ============================================================================== */
 .nav-bar {
   display: flex;
   gap: 1.6rem;
-  padding: 2rem 0rem;
+  padding: 1.6rem 2rem;
   font-size: 0.9rem;
   font-weight: 300;
-  margin: 0rem 2rem;
+  border-bottom: 1px groove var(--border-color);
+  box-shadow: 0px 0px 16px 2px var(--bg);
+  width: 100%;
 }
 
 .nav-bar a:link {
@@ -221,36 +287,74 @@ button:disabled {
   color: var(--text-color);
 }
 
-.nav-bar a:visited{
+.nav-bar a:visited {
   color: var(--text-color);
 }
 
-.nav-bar a:hover{
+.nav-bar a:hover {
   border-bottom: 1px ridge var(--another);
   color: var(--another);
 }
 
-.nav-bar a:focus{
+.nav-bar a:focus {
   border-bottom: 1px ridge var(--another);
   color: var(--another);
 }
 
-.nav-bar a:active{
+.nav-bar a:active {
   color: var(--border-focus);
 }
 
 /* ==================================================== SHOWCASE =============================================================
 =========================================IMAGE & TEXT SIDE BY SIDE ======================================================= */
+.view-state {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 300;
+  /* margin: 0rem 0rem 4rem; */
+  padding: 1.8rem 0rem;
+  border-top: 1px solid var(--border-focus);
+  border-bottom: 1px solid var(--border-focus);
+}
+
+.view-state h4 {
+  border-bottom: none;
+  letter-spacing: 0px;
+  color: var(--another);
+  transition-property: letter-spacing border-bottom color;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+}
+
+.view-state h4:hover {
+  cursor: pointer;
+  border-bottom: 1px groove var(--border-focus);
+  letter-spacing: 1px;
+  color: var(--border-focus);
+}
+
+.view-state h4:focus {
+  cursor: pointer;
+  border-bottom: 1px groove var(--border-focus);
+  letter-spacing: 1px;
+  color: var(--border-focus);
+}
+
+.view-state h4:active {
+  border-bottom: 1px groove var(--border-focus);
+}
+
 .showcase {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  margin: 0rem 2rem;
+  margin: 8rem 2rem;
 }
 
 .showcase-image {
-  width: 80%;
-  height: 80%;
+  width: 100%;
 }
 
 .showcase-text {
@@ -263,17 +367,16 @@ button:disabled {
 /* ================================================================FOOTER ==========================================================
 ============================================== FOOTER COMPONENTS ================================================================= */
 /* sign up form */
-input[type='email'] {
+.footer input[type="email"] {
   padding: 0.5rem;
   width: 10rem;
 }
 
-button {
+.footer button {
   padding: 0.5rem 0.8rem;
   background-color: var(--another);
   color: var(--white);
 }
-
 
 /* footer wrapper */
 .footer {
@@ -290,7 +393,7 @@ button {
   font-size: 1.2rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
-  padding: 2rem 0rem;
+  padding: 1.8rem 0rem;
   background-color: var(--border-color);
   color: var(--another);
 }
@@ -305,28 +408,28 @@ button {
   font-weight: 300;
 }
 
-.footer ul li a:link{
+.footer ul li a:link {
   text-decoration: none;
   color: var(--text-color);
   border-bottom: none;
   transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.footer ul li a:visited{
+.footer ul li a:visited {
   color: var(--text-color);
 }
 
-.footer ul li a:hover{
+.footer ul li a:hover {
   border-bottom: 1px ridge var(--another);
   color: var(--another);
 }
 
-.footer ul li a:focus{
+.footer ul li a:focus {
   border-bottom: 1px ridge var(--another);
   color: var(--another);
 }
 
-.footer ul li a:active{
+.footer ul li a:active {
   color: var(--border-focus);
 }
 
@@ -338,19 +441,148 @@ button {
 }
 
 .base-footer {
-  font-size: 0.8rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  /* justify-content: center; */
+  /* justify-items: center; */
+  font-size: 0.8rem;
   padding: 0rem 16rem 4rem;
   column-gap: 0.5rem;
-  justify-items: center;
   color: var(--another);
-
 }
+
+/* center other columns not first column */
+.base-footer section:not(.first-col) {
+  justify-self: center;
+} 
 
 .base-footer a {
   text-decoration: none;
   display: block;
   color: var(--another);
   padding: 0.2rem 0rem;
+  transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1);
 }
+
+.footerHorList,
+.horList {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0rem;
+}
+
+.footerHorList {
+  justify-content: space-evenly;
+}
+
+.horList {
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.footerHorList a {
+  text-decoration: none;
+  color: var(--text-color);
+  border-bottom: none;
+  transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.footerHorList a:hover {
+  border-bottom: 1px ridge var(--another);
+  color: var(--another);
+}
+
+.footerHorList a:focus {
+  border-bottom: 1px ridge var(--another);
+  color: var(--another);
+}
+
+/* ================================================================= FEEDBACK =====================================================
+======================================== FORM =====================================================================================*/
+.feedback-form-container {
+  font-size: 1rem;
+  font-weight: 300;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4rem;
+  margin-top: 2rem;
+  background-color: var(--border-color);
+  color: var(--text-color);
+  width: 36%;
+}
+
+.feedback-form-container h1 {
+  margin-bottom: 1.8rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--another);
+}
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.wrap {
+  display: flex;
+  width: 100%;
+}
+
+.feedback-form-label, .feedback-form-label label {
+  width: 28%;
+  color: var(--another);
+}
+
+.wrap input:focus, .wrap textarea:focus {
+  border: 1px solid var(--white);
+  background-color: var(--border-color);
+}
+
+.wrap textarea, .wrap input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  outline: none;
+  transition: all 200ms ease-in-out;
+}
+
+.wrap textarea {
+  height: 12rem;
+  resize: none;
+}
+
+.input-container {
+  width: 100%;
+}
+
+.feedback button {
+  padding: 0.5rem 0rem;
+  border: 2px solid var(--white);
+  background-color: var(--border-color);
+  color: var(--another);
+  outline: none;
+  transition: background-color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.feedback button:hover {
+  background-color: var(--border-focus);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.feedback button:focus {
+  background-color: var(--border-focus);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.feedback ::placeholder {
+  opacity: 0.5;
+  color: var(--text-color);
+}
+

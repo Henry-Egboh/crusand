@@ -7,7 +7,7 @@ const NavComponent = () => {
         <NavLink to='about'>About</NavLink>
         <NavLink to='basicform'>Basic Form</NavLink>
         <NavLink to='advancedform'>Advanced Form</NavLink>
-        <NavLink to='thenform'>Then Form</NavLink>
+        <NavLink to='feedbackform'>Feedback Form</NavLink>
         <NavLink to='YetAnotherForm'>Yet Another Form</NavLink>
     </nav>
      );
