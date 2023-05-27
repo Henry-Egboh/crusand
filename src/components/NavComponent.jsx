@@ -8,7 +8,7 @@ const NavComponent = () => {
         <NavLink to='basicform'>Basic Form</NavLink>
         <NavLink to='advancedform'>Advanced Form</NavLink>
         <NavLink to='feedbackform'>Feedback Form</NavLink>
-        <NavLink to='YetAnotherForm'>Yet Another Form</NavLink>
+        <NavLink to="newslettersignup">NewLetter</NavLink>
     </nav>
      );
 }

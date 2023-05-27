@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import NewsLetterSignUp from "./NewsLetterSignUp";
+import SignUp from "./SignUp";
 
 const FooterComponent = () => {
   return (
-    <main>
+    <main className="footer-container">
       {/* footer section */}
       <section className="footer-header">
         <h2>We can do more</h2>
@@ -15,7 +15,7 @@ const FooterComponent = () => {
         <section>
           <h4>Get Our Weekly Newsletter</h4>
           <div className="Sign-up">
-            <NewsLetterSignUp />
+            <SignUp />
           </div>
         </section>
         {/* col 2 */}
@@ -74,16 +74,16 @@ const FooterComponent = () => {
         </section>
       </footer>
 
-      {/* base footer */}
-      <footer className="base-footer">
+      {/* footer-second-row */}
+      <footer className="footer-second-row">
         {/* one */}
         <section className="first-col">
           <h4>Basking Forth</h4>
           <p>
-            <NavLink to="/">Investigation Duel</NavLink>
+            <NavLink to="/">Investigation Duel of excellence in between</NavLink>
           </p>
           <p>
-            <NavLink to="/">Motions of Code</NavLink>
+            <NavLink to="/">Motions of Code invites essence</NavLink>
           </p>
         </section>
 
