@@ -9,6 +9,7 @@ const NavComponent = () => {
         <NavLink to='advancedform'>Advanced Form</NavLink>
         <NavLink to='feedbackform'>Feedback Form</NavLink>
         <NavLink to="newslettersignup">NewLetter</NavLink>
+        <NavLink to="login">Login</NavLink>
     </nav>
      );
 }

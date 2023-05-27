@@ -8,6 +8,7 @@ import AdvancedForm from './components/AdvancedForm';
 import {FeedbackForm} from "./components/FeedbackForm";
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import NewsLetterSignUp from "./components/NewsLetterSignUp";
+import Login from "./components/Login";
 
 function App() {
 const router = createBrowserRouter(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="advancedform" element={<AdvancedForm />} />
       <Route path="feedbackform" element={<FeedbackForm />} />
       <Route path="newslettersignup" element={<NewsLetterSignUp />}/>
+      <Route path="login" element={<Login />} />
     </Route>
   )
 );
