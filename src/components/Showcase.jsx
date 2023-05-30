@@ -1,3 +1,4 @@
+import React from "react";
 import pic from "../assets/robert.jpg";
 import edward from "../assets/edward.jpg";
 import { useState } from "react";

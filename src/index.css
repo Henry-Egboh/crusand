@@ -738,7 +738,8 @@ button:disabled {
   color: var(--white);
 }
 
-.login-btn {
+/* button for login in form and advanced form  */
+.login-btn, .advancedFormBtn {
   padding: 1rem;
   width: 100%;
   background-color: var(--text-color);
@@ -750,7 +751,7 @@ button:disabled {
   /* line-height: 1.6rem; */
 }
 
-.login-btn:hover, .login-btn:focus {
+.login-btn:hover, .login-btn:focus, .advancedFormBtn:focus, .advancedFormBtn:hover {
   background-color: var(--border-focus);
   border: 1px solid var(--white);
   color: var(--text-color);
@@ -766,3 +767,58 @@ button:disabled {
   margin: 2rem 0rem;
 }
 
+/* ================================================================= ADVANCED =========================================================
+=================================================== FORM ============================================================================= */
+.advanced-form-wrapper {
+  width: 45%;
+  margin: 8rem auto 4rem;
+  background-color: var(--another);
+  padding: 4rem 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.6rem;
+}
+
+.advancedFormLabel {
+  width: 16%;
+  display: inline-flex;
+  color: var(--white);
+}
+
+.advancedFormField {
+  padding: 0.6rem 1rem;
+  outline: none;
+  border: 1px solid var(--border-color);
+  width: 84%;
+  transition: all 200ms ease-in-out;
+}
+
+.advancedFormField:focus {
+  background-color: var(--border-color);
+  border: 1px solid var(--border-focus);
+  border-radius: 0.5rem;
+}
+
+
+.advancedFormBtn:focus, .advancedFormBtn:hover {
+  background-color: var(--border-color);
+  border: 1px solid var(--white);
+  color: var(--text-color);
+  outline: none;
+  cursor: pointer;
+}
+
+.advancedRadioWrapper, .acceptTermsWrapper {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  color: var(--white);
+  font-weight: 300;
+  font-size: 0.8rem;
+  font-style: oblique;
+}
+
+.advancedRadioMale, .advancedRadioFemale, .acceptTerms {
+  margin-right: 1rem;
+  /* user-select: all; */
+}

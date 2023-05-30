@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import SignUp from "./SignUp";
+import React from "react";
 
 const FooterComponent = () => {
   return (
