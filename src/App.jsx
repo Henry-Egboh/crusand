@@ -10,6 +10,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import NewsLetterSignUp from "./components/NewsLetterSignUp";
 import Login from "./components/Login";
 import AdvancedForm from "./components/AdvancedForm";
+import { ComplicatedForm } from "./components/ComplicatedForm";
 
 function App() {
 const router = createBrowserRouter(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="newslettersignup" element={<NewsLetterSignUp />}/>
       <Route path="login" element={<Login />} />
       <Route path="advancedform" element={<AdvancedForm />} />
+      <Route path="complicatedform" element={<ComplicatedForm />} />
     </Route>
   )
 );

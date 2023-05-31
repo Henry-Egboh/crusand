@@ -31,6 +31,7 @@ const AdvancedForm = () => {
       >
         <Form>
           <section className="advanced-form-wrapper">
+            <h1>Fill up the forms accordingly.</h1>
             <div className="advancedFormFullname">
               <label className="advancedFormLabel" htmlFor="fullName">
                 Full Name:{" "}
@@ -97,11 +98,10 @@ const AdvancedForm = () => {
             <fieldset className="advancedRadioWrapper">
               {/* male */}
               <div>
-                <label htmlFor="radioMale">
+                <label>
                   <Field
                     name="advancedRadioMale"
                     className="advancedRadioMale"
-                    id="radioMale"
                     type="radio"
                     checked="checked"
                   />
@@ -111,11 +111,10 @@ const AdvancedForm = () => {
               </div>
               {/* female */}
               <div>
-                <label htmlFor="radioFemale">
+                <label>
                   <Field
                     name="advancedRadioFemale"
                     className="advancedRadioFemale"
-                    id="radioFemale"
                     type="radio"
                   />
                   Female

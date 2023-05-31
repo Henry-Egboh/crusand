@@ -779,10 +779,18 @@ button:disabled {
   gap: 1.6rem;
 }
 
+.advanced-form-wrapper h1 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--border-color);
+}
+
 .advancedFormLabel {
   width: 16%;
   display: inline-flex;
   color: var(--white);
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .advancedFormField {
@@ -812,7 +820,7 @@ button:disabled {
   display: flex;
   gap: 3rem;
   align-items: center;
-  color: var(--white);
+  color: var(--border-color);
   font-weight: 300;
   font-size: 0.8rem;
   font-style: oblique;
@@ -820,5 +828,103 @@ button:disabled {
 
 .advancedRadioMale, .advancedRadioFemale, .acceptTerms {
   margin-right: 1rem;
-  /* user-select: all; */
+}
+
+/* ====================================================== COMPLICATED ===================================================================
+======================================================================= FORM =========================================================== */
+/* container for formik and forms */
+.complicatedFormContainer {
+  width: 50%;
+  margin: 2rem auto 0rem;
+  /* background-color: var(--border-color); */
+  padding: 4rem;
+}
+
+.complicatedFormContainer h1 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 400;
+  color: var(--another);
+  margin-bottom: 2rem;
+}
+/* input labels */
+.complicatedLabel {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6rem;
+  color: var(--text-color);
+  width: 25%;
+}
+
+/*individual input */
+.complicatedInput {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  /* border-radius: 0.4rem; */
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+
+/* placeholder text */
+.complicatedInput::placeholder {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--border-color);
+}
+
+/* div that wraps the input element */
+.complicatedInputWrapper {
+  width: 100%;
+}
+
+/* input hover */
+.complicatedInput:focus {
+  border-radius: 0rem;
+  outline: none;
+  border: 2px solid var(--border-color);
+}
+
+/* input types wrapper */
+.textInputWrapper {
+  display: flex;
+  align-items: center;
+}
+/* wraps the component composition in the main form component */
+.complicatedFormWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+/* button component */
+.complicatedBtn {
+  padding: 0.8rem 1rem;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6rem;
+  outline: none;
+  border: 1px solid var(--white);
+  border-radius: 0.4rem;
+  background-color: var(--another);
+  transition: transform 200ms ease-in background-color 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* button on hover */
+.complicatedBtn:hover, .complicatedBtn:focus {
+  transform: scale(0.99);
+  background-color: var(--border-color);
+  cursor: pointer;
+  color: var(--text-color);
+}
+/* default placeholder text on select element */
+.valueOfText {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--border-color);
+}
+/* when select input is selected */
+.selectClass:focus {
+  background-color: var(--text-color);
+  color: var(--white);
 }
