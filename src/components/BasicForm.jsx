@@ -4,13 +4,6 @@ import { schema } from "../utilities/schema";
 import { useState } from "react";
 // import * as yup from 'yup';
 
-// function that fires when handleSubmit runs
-// const onSubmit = async (values, actions) => {
-// console.log(initialValues);
-//   await new Promise((resolve) => setTimeout(resolve, 1000))
-//   actions.resetForm
-// };
-
 export const BasicForm = () => {
   // useformik configurations
   const {
@@ -35,10 +28,10 @@ export const BasicForm = () => {
 
     // validation using yup
     validationSchema: schema,
-    onSubmit: async (values, helpers) => {
+    onSubmit: async (values, {resetForm}) => {
       console.log(values);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      helpers.resetForm();
+      resetForm();
     },
   });
   // console.log(values);
