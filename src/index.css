@@ -781,7 +781,7 @@ button:disabled {
   width: 45%;
   margin: 8rem auto 4rem;
   background-color: var(--another);
-  padding: 4rem 2rem;
+  padding: 4rem;
   display: flex;
   flex-flow: column nowrap;
   gap: 1.6rem;
@@ -835,8 +835,7 @@ button:disabled {
   font-style: oblique;
 }
 
-.advancedRadioMale,
-.advancedRadioFemale,
+.advancedRadioBtn,
 .acceptTerms {
   margin-right: 1rem;
 }
@@ -845,7 +844,7 @@ button:disabled {
 ======================================================================= FORM =========================================================== */
 /* container for formik and forms */
 .complicatedFormContainer {
-  width: 50%;
+  width: 60%;
   margin: 2rem auto 0rem;
   /* background-color: var(--border-color); */
   padding: 4rem;

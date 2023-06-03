@@ -6,29 +6,40 @@ const AdvancedForm = () => {
   return (
     <main className="advanced-form-container">
       <Formik
-        initialValues={{ fullName: "", email: "", department: "", country: "" }}
+        initialValues={{
+          fullName: "",
+          email: "",
+          department: "",
+          country: "",
+          gender: "",
+          acceptedTerms: false,
+        }}
         // yup validation
         validationSchema={Yup.object({
           fullName: Yup.string()
-            .min(5, 'Minimum of 5 characters')
+            .min(5, "Minimum of 5 characters")
             .max(15, "Maximum of 15 characters")
             .required("Required"),
           email: Yup.string()
             .email("Invalid Email Address")
             .required("Required"),
-          department: Yup.string()
-            .required("Required"),
-          country: Yup.string()
-            .required("Required"),
+          department: Yup.string().required("Required"),
+          country: Yup.string().required("Required"),
+          gender: Yup.string().required("Required"),
+          acceptedTerms: Yup.boolean()
+            .oneOf([true], "Accept our terms and conditions")
+            .required(),
         })}
         // onSubmit
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, helpers) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
+            helpers.resetForm();
+            // setSubmitting(false);
           }, 400);
         }}
       >
+        {({isSubmitting})=> (
         <Form>
           <section className="advanced-form-wrapper">
             <h1>Fill up the forms accordingly.</h1>
@@ -41,7 +52,9 @@ const AdvancedForm = () => {
                 name="fullName"
                 type="text"
               />
-              <span className="error-display"><ErrorMessage name="fullName" /></span>
+              <span className="error-display">
+                <ErrorMessage name="fullName" />
+              </span>
             </div>
 
             <div className="advancedFormEmail">
@@ -49,7 +62,9 @@ const AdvancedForm = () => {
                 Email:{" "}
               </label>
               <Field className="advancedFormField" name="email" type="email" />
-              <span className="error-display"><ErrorMessage name="email" /></span>
+              <span className="error-display">
+                <ErrorMessage name="email" />
+              </span>
             </div>
 
             <div className="advancedFormDepartment">
@@ -61,17 +76,16 @@ const AdvancedForm = () => {
                 as="select"
                 className="advancedFormField"
               >
-                <option value="Select your Department">
-                  Select your Department ...
-                </option>
-                <option value="chemical">Chemical</option>
+                <option value="">Select your department ...</option>
                 <option value="resources">Human Resources</option>
                 <option value="engineering">Engineering</option>
                 <option value="ict">ICT</option>
                 <option value="logistics">Logistics</option>
                 <option value="mechanical">Mechanical</option>
               </Field>
-              <span className="error-display"><ErrorMessage name="department" /></span>
+              <span className="error-display">
+                <ErrorMessage name="department" />
+              </span>
             </div>
             {/* country */}
             <div className="advancedFormCountry">
@@ -92,7 +106,9 @@ const AdvancedForm = () => {
                 <option value="Netherland"></option>
                 <option value="Belgium"></option>
               </datalist>
-              <span className="error-display"><ErrorMessage name="country" /></span>
+              <span className="error-display">
+                <ErrorMessage name="country" />
+              </span>
             </div>
             {/* gender */}
             <fieldset className="advancedRadioWrapper">
@@ -100,47 +116,55 @@ const AdvancedForm = () => {
               <div>
                 <label>
                   <Field
-                    name="advancedRadioMale"
-                    className="advancedRadioMale"
+                    name="gender"
+                    className="advancedRadioBtn"
                     type="radio"
-                    checked="checked"
+                    value="male"
                   />
                   Male
                 </label>
-                <span className="error-display"><ErrorMessage name="advancedRadioMale" /></span>
+                <span className="error-display">
+                  <ErrorMessage name="gender" />
+                </span>
               </div>
               {/* female */}
               <div>
                 <label>
                   <Field
-                    name="advancedRadioFemale"
-                    className="advancedRadioFemale"
+                    name="gender"
+                    className="advancedRadioBtn"
                     type="radio"
+                    value="female"
                   />
                   Female
                 </label>
-                <span className="error-display"><ErrorMessage name="advancedRadioFemale" /></span>
+                <span className="error-display">
+                  <ErrorMessage name="gender" />
+                </span>
               </div>
             </fieldset>
-            {/* terfms of service */}
+            {/* terms of service */}
             <div className="acceptTermsWrapper">
               <label htmlFor="acceptTerms">
                 <Field
                   className="acceptTerms"
-                  name="acceptTerms"
+                  name="acceptedTerms"
                   id="acceptTerms"
                   type="checkbox"
                 />
                 Accept our Terms of Service as stated in our Policy.
               </label>
-              <span className="error-display"><ErrorMessage name="acceptTerms" /></span>
+              <span className="error-display">
+                <ErrorMessage name="acceptedTerms" />
+              </span>
             </div>
             {/* submit button */}
-            <button type="submit" className="advancedFormBtn">
+            <button type="submit" className="advancedFormBtn" disabled={isSubmitting} >
               Submit
             </button>
           </section>
         </Form>
+        )}
       </Formik>
     </main>
   );

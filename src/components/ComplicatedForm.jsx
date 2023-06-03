@@ -121,22 +121,32 @@ const CheckboxInput = ({ children, ...props }) => {
       <label htmlFor={props.id || props.name}>
         <input className="confirm" type="checkbox" {...field} {...props} />
         {children}
-        {meta.touched && meta.error ? <div className="error-display">{meta.error}</div> : null}
+        {meta.touched && meta.error ? (
+          <div className="error-display">{meta.error}</div>
+        ) : null}
       </label>
     </>
   );
 };
 
+// radio input
 const RadioInput = ({ children, ...props }) => {
   const [field, meta] = useField({ ...props, type: "radio" });
 
   return (
     <>
       <label htmlFor={props.id || props.name}>
-        <input className="radioInput" type="radio" {...field} {...props} />
+        <input
+          className="radioInput"
+          type="radio"
+          {...field}
+          {...props}
+        />
         {children}
+        {meta.touched && meta.error ? (
+        <div className="error-display">{meta.error}</div>
+      ) : null}
       </label>
-      {meta.touched && meta.error ? <div className="error-display">{meta.error}</div> : null}
     </>
   );
 };
@@ -159,8 +169,7 @@ export const ComplicatedForm = () => {
           nameOfNextOfKin: "",
           nextOfKinAddress: "",
           confirm: false,
-          gender: false,
-
+          gender: '',
         }}
         validationSchema={Yup.object({
           surname: Yup.string()
@@ -174,9 +183,8 @@ export const ComplicatedForm = () => {
           email: Yup.string()
             .email("Invalid Email Address")
             .required("Required"),
-          dob: Yup.string().required("Required"),
+          dob: Yup.date('Must be a number').required('Required'),
           mobile: Yup.number("Must be a number")
-            .max(11, 'Maximum of 11 digits')
             .required("Required"),
           lga: Yup.string().required("Required"),
           jobType: Yup.string()
@@ -205,19 +213,14 @@ export const ComplicatedForm = () => {
             .max(50, "Max of fifty characters")
             .required("Required"),
           confirm: Yup.boolean()
-          .required('Required')
-          .oneOf([true], 'Confirm the information provided'),
-          male: Yup.boolean()
-          .required('Required')
-          .oneOf([true], 'Select your gender'),
-          female: Yup.boolean()
-          .required('Required')
-          .oneOf([true], 'Select your gender'),
+            .required("Required")
+            .oneOf([true], "Confirm the information provided"),
+          gender: Yup.string().required('Required'),
         })}
         onSubmit={async (values, helpers) => {
           console.log(values);
-          helpers.resetForm();
           await new Promise((resolve) => setTimeout(resolve, 1000));
+          helpers.resetForm();
         }}
       >
         <Form>
@@ -313,15 +316,15 @@ export const ComplicatedForm = () => {
               name="nextOfKinAddress"
             />
             {/* gender */}
-            
-              <fieldset className="complicatedGender">
-                <RadioInput name="male">
-                  Male
-                </RadioInput>
-                <RadioInput name="female">
-                  Female
-                </RadioInput>
-              </fieldset>
+
+            <fieldset className="complicatedGender">
+              <RadioInput name="gender" value="male" id="male">
+                Male
+              </RadioInput>
+              <RadioInput name="gender" value="female" id="female">
+                Female
+              </RadioInput>
+            </fieldset>
             {/* declaration */}
             <CheckboxInput name="confirm">
               I confirm that the information provided are true
