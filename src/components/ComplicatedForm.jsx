@@ -118,8 +118,9 @@ const CheckboxInput = ({ children, ...props }) => {
 
   return (
     <>
-      <label htmlFor={props.id || props.name}>
-        <input className="confirm" type="checkbox" {...field} {...props} />
+      <label className="checkboxLabel" htmlFor={props.id || props.name}>
+        <input defaultChecked className="confirm" type="checkbox" {...field} {...props} />
+        <span className="customCheckbox"></span>
         {children}
         {meta.touched && meta.error ? (
           <div className="error-display">{meta.error}</div>
@@ -184,8 +185,7 @@ export const ComplicatedForm = () => {
             .email("Invalid Email Address")
             .required("Required"),
           dob: Yup.date('Must be a number').required('Required'),
-          mobile: Yup.number("Must be a number")
-            .required("Required"),
+          mobile: Yup.number().required('Required').integer().positive(),
           lga: Yup.string().required("Required"),
           jobType: Yup.string()
             .oneOf(

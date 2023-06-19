@@ -145,13 +145,14 @@ const AdvancedForm = () => {
             </fieldset>
             {/* terms of service */}
             <div className="acceptTermsWrapper">
-              <label htmlFor="acceptTerms">
+              <label className="advancedCheckboxLabel" htmlFor="acceptTerms">
                 <Field
                   className="acceptTerms"
                   name="acceptedTerms"
                   id="acceptTerms"
                   type="checkbox"
                 />
+                <span className="advancedCustomCheckbox"></span>
                 Accept our Terms of Service as stated in our Policy.
               </label>
               <span className="error-display">

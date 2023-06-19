@@ -10,6 +10,7 @@ export default function Login() {
     initialValues: {
       username: "",
       password: "",
+      staySignedIn: false,
     },
 // yup validation
     validationSchema: Yup.object({
@@ -20,11 +21,13 @@ export default function Login() {
       password: Yup.string()
         .required("Required")
         .matches(passRules, { message: "Invalid password" }),
+        staySignedIn: Yup.boolean().optional(),
     }),
 
-    onSubmit: async (values) => {
+    onSubmit: async (values, {resetForm}) => {
       console.log(values);
       await new Promise((resolve) => setTimeout(resolve, 1000));
+      resetForm();
     },
   });
   console.log(formik.errors);
@@ -72,13 +75,14 @@ export default function Login() {
 
         {/* stay signed in  */}
         <div className="login-wrapper staySignedIn-wrapper">
-          <label htmlFor="staySignedIn">
+          <label htmlFor="staySignedIn" className="staySignedInLabel">
             <input
               type="checkbox"
               id="staySignedIn"
               className="login-checkbox"
               {...formik.getFieldProps("staySignedIn")}
             />
+            <span className="checkMark"></span>
             Stay Signed In
           </label>
         </div>

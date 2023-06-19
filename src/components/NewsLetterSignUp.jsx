@@ -18,26 +18,35 @@ const schema = Yup.object({
       passRules,
       "Use Upper case, lower case, a char and max of 15 char"
     ),
+  accept: Yup.boolean().required().oneOf([true], "please select"),
 });
 
-const onSubmit = async (values) => {
+const onSubmit = async (values, { resetForm }) => {
   console.log(values);
   await new Promise((resolve) => setTimeout(resolve, 1000));
+  resetForm();
 };
 
 export default function NewsLetterSignUp() {
-  const { handleBlur, handleChange, handleSubmit, errors, values, touched, isSubmitting } =
-    useFormik({
-      initialValues: {
-        username: "",
-        email: "",
-        password: "",
-        checkbox: "",
-      },
+  const {
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    errors,
+    values,
+    touched,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      accept: false,
+    },
 
-      validationSchema: schema,
-      onSubmit,
-    });
+    validationSchema: schema,
+    onSubmit,
+  });
 
   console.log(errors);
 
@@ -62,7 +71,9 @@ export default function NewsLetterSignUp() {
             />
           </div>
         </div>
-        {errors.username && touched.username ? (<div className="error-display">{errors.username}</div>) : null}
+        {errors.username && touched.username ? (
+          <div className="error-display">{errors.username}</div>
+        ) : null}
 
         {/* email */}
         <div className="newsletter-wrapper">
@@ -81,7 +92,9 @@ export default function NewsLetterSignUp() {
             />
           </div>
         </div>
-        {errors.email && touched.email ? (<div className="error-display">{errors.email}</div>) : null}
+        {errors.email && touched.email ? (
+          <div className="error-display">{errors.email}</div>
+        ) : null}
 
         {/* password */}
         <div className="newsletter-wrapper">
@@ -100,20 +113,25 @@ export default function NewsLetterSignUp() {
             />
           </div>
         </div>
-        {errors.password && touched.password ? (<div className="error-display">{errors.password}</div>) : null}
+        {errors.password && touched.password ? (
+          <div className="error-display">{errors.password}</div>
+        ) : null}
 
         {/* agree to our weekly publication */}
         <fieldset className="newsletter-checkbox">
-          <div>
-            <input type="checkbox" name="checkbox" />
-          </div>
-          <div>
-            <label htmlFor="checkbox">
-              Get our weekly newsletter on your email
-            </label>
-          </div>
+          <label>
+            <input type="checkbox" name="accept" />
+            Get our weekly newsletter on your email
+          </label>
+          {errors.accept && touched.accept ? (
+            <div className="error-display">{errors.accept}</div>
+          ) : null}
         </fieldset>
-        <button className="newsletter-btn" type="submit" disabled={isSubmitting}>
+        <button
+          className="newsletter-btn"
+          type="submit"
+          disabled={isSubmitting}
+        >
           Sign Up
         </button>
       </form>
