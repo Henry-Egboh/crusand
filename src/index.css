@@ -17,49 +17,52 @@
   --text-color: hsl(327, 11%, 15%);
 }
 
-/* .bg {
-  border: 1px solid var(--border-color);
-  position: relative;
+/* ======================================= HERO SECTION =========================================================== */
+.hero-section-container {
+  margin-bottom: 8rem;
+
+  .title {
+    color: var(--another);
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+  .subTitle {
+    color: var(--border-focus);
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+
+  .desc {
+    color: var(--another);
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
 }
 
-img {
+.hero-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 4rem 8rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  .hero-content {
+    display: grid;
+    gap: 0.5rem;
+  }
+}
+
+.hero-image-container {
   width: 100%;
+  display: grid;
+  /* justify-content: center; */
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background-color: var(--bg);
-  color: var(--white);
-  width: 100%;
-  opacity: 0;
+.hero-image {
+  width: 80%;
+  justify-self: center;
 }
-
-.bg,
-.overlay {
-  text-align: center;
-}
-
-img,
-.overlay {
-  transition: 1000ms all;
-  cursor: pointer;
-}
-
-.overlay:hover {
-  opacity: 1;
-}
-
-img:hover {
-  filter: blur(2px);
-}
-
-.overlay h4 {
-  padding-top: 45%;
-} */
-
 /* ========================================= TOP ==============================================================================
 ============================================================ HEADER ========================================================= */
 .top-header {
@@ -309,17 +312,19 @@ button:disabled {
 =========================================IMAGE & TEXT SIDE BY SIDE ======================================================= */
 .view-state {
   display: flex;
-  gap: 4rem;
+  gap: 6rem;
   justify-content: center;
+  align-items: center;
   font-size: 1rem;
   font-weight: 300;
   /* margin: 0rem 0rem 4rem; */
-  padding: 1.8rem 0rem;
+  padding: 1.5rem 0rem;
   border-top: 1px solid var(--border-focus);
   border-bottom: 1px solid var(--border-focus);
+  transition: 400ms ease-in-out;
 }
 
-.view-state h4 {
+.view-state-1 {
   border-bottom: none;
   letter-spacing: 0px;
   color: var(--another);
@@ -328,21 +333,21 @@ button:disabled {
   transition-timing-function: ease-in-out;
 }
 
-.view-state h4:hover {
+.view-state-1:hover {
   cursor: pointer;
   border-bottom: 1px groove var(--border-focus);
   letter-spacing: 1px;
   color: var(--border-focus);
 }
 
-.view-state h4:focus {
+.view-state-1:focus {
   cursor: pointer;
   border-bottom: 1px groove var(--border-focus);
   letter-spacing: 1px;
   color: var(--border-focus);
 }
 
-.view-state h4:active {
+.view-state-1:active {
   border-bottom: 1px groove var(--border-focus);
 }
 
@@ -392,10 +397,10 @@ button:disabled {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 400;
-  letter-spacing: 0.1rem;
-  padding: 1.8rem 0rem;
-  background-color: var(--border-color);
-  color: var(--another);
+  /* letter-spacing: 0.1rem; */
+  padding: 1.2rem 0rem;
+  background-color: var(--border-focus);
+  color: var(--text-color);
 }
 
 .footer ul {

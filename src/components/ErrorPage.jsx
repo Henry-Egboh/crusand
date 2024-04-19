@@ -4,7 +4,7 @@ import React from "react";
 const ErrorPage = () => {
     const error = useRouteError();
     // console.error(error)
-    return ( 
+    return (
         <header className="error-page">
         <div>
         <h1>Oops...!</h1>
@@ -16,5 +16,5 @@ const ErrorPage = () => {
         </header>
      );
 }
- 
+
 export default ErrorPage;

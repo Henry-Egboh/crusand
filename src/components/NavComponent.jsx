@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 const NavComponent = () => {
-    return ( 
+    return (
     <nav className="nav-bar">
         <NavLink to='/'>Home</NavLink>
         <NavLink to='about'>About</NavLink>
@@ -14,5 +14,5 @@ const NavComponent = () => {
     </nav>
      );
 }
- 
+
 export default NavComponent;
